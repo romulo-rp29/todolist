@@ -7,29 +7,30 @@ function newTask() {
     null
   } else {
     document.getElementById('lista-tarefas').appendChild(li);
-    li.classList.add('tarefaAdicionada')
-    li.style.backgroundColor = 'blue'
+    li.classList.add('tarefa-adicionada')
+    li.style.backgroundColor = 'white'
   }
   document.getElementById("texto-tarefa").value = '';
   let selections = document.getElementById('lista-tarefas').children;
   for (let selection of selections) {
+
     selection.addEventListener('click',function(event){
       event.target.style.backgroundColor = 'rgb(128,128,128)'
+      event.target.classList.add('tarefa-selecionada')
     });
+
+    selection.addEventListener('dblclick', function(event){
+      event.target.classList.add('completed')
+      document.querySelector('.completed').style.cssText = 'text-decoration: line-through solid rgb(0, 0, 0)'
+    });
+
+
+
   }
-
-  // function deselectTask(){
-  //   if () {
-
-  //   }
-  // }
 }
-
-// let selections = document.getElementById('lista-tarefas').children;
-
-// for (let selection of selections) {
-   
-//     selection.addEventListener('click',function(event){
-//       event.target.style.backgroundColor = 'red'
-//     });
-// }
+document.addEventListener("keypress", function(event) {
+  if(event.key === 'Enter') {
+      let btn = document.querySelector("#criar-tarefa");
+    btn.click();
+  }
+});
