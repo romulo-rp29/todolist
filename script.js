@@ -14,18 +14,22 @@ function newTask() {
   let selections = document.getElementById('lista-tarefas').children;
   for (let selection of selections) {
 
-    selection.addEventListener('click',function(event){
-      event.target.style.backgroundColor = 'rgb(128,128,128)'
-      event.target.classList.add('tarefa-selecionada')
-    });
 
-    selection.addEventListener('dblclick', function(event){
-      event.target.classList.add('completed')
-      document.querySelector('.completed').style.cssText = 'text-decoration: line-through solid rgb(0, 0, 0)'
+
+    selection.addEventListener('click',function(event1){
+      event1.target.classList.toggle('tarefa-selecionada')
     });
 
 
 
+    // selection.addEventListener('click',function(event2){
+    //   event2.target.style.backgroundColor = 'rgb(128,128,128)'
+    //   event2.target.classList.toggle('tarefa-selecionada')
+    // });
+    selection.addEventListener('dblclick', function(event3){
+      event3.target.classList.toggle('completed')
+      event3.target.style.cssText = 'text-decoration: line-through solid rgb(0, 0, 0)'
+    });
   }
 }
 document.addEventListener("keypress", function(event) {
