@@ -1,4 +1,5 @@
 function newTask() {
+  
   let li = document.createElement('li');
   let inputTask = document.getElementById('texto-tarefa').value;
   let task = document.createTextNode(inputTask);
@@ -13,22 +14,14 @@ function newTask() {
   document.getElementById("texto-tarefa").value = '';
   let selections = document.getElementById('lista-tarefas').children;
   for (let selection of selections) {
-
-
-
-    selection.addEventListener('click',function(event1){
-      event1.target.classList.toggle('tarefa-selecionada')
+    selection.addEventListener('click',function(event){
+      event.target.style.backgroundColor = 'rgb(128,128,128)'
+      event.target.classList.add('tarefa-selecionada')
     });
-
-
-
-    // selection.addEventListener('click',function(event2){
-    //   event2.target.style.backgroundColor = 'rgb(128,128,128)'
-    //   event2.target.classList.toggle('tarefa-selecionada')
-    // });
-    selection.addEventListener('dblclick', function(event3){
-      event3.target.classList.toggle('completed')
-      event3.target.style.cssText = 'text-decoration: line-through solid rgb(0, 0, 0)'
+    selection.addEventListener('dblclick', function(event){
+      event.target.classList.add('completed')
+      document.querySelector('.completed').style.cssText = 
+      'text-decoration: line-through solid rgb(0, 0, 0)'
     });
   }
 }
@@ -38,3 +31,15 @@ document.addEventListener("keypress", function(event) {
     btn.click();
   }
 });
+function clearTasks() {
+  let tasksList = document.querySelector('#lista-tarefas');
+  tasksList.innerHTML = '';
+};
+function clearCompleted() {
+  let selections = document.getElementById('lista-tarefas').children;
+  for (let selection of selections) {
+    if (selection.classList.contains('completed')) {
+      document.querySelectorAll('#completed')
+    }
+  }
+};
