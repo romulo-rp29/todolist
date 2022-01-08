@@ -34,12 +34,10 @@ document.addEventListener("keypress", function(event) {
 function clearTasks() {
   let tasksList = document.querySelector('#lista-tarefas');
   tasksList.innerHTML = '';
-};
-function clearCompleted() {
-  let selections = document.getElementById('lista-tarefas').children;
-  for (let selection of selections) {
-    if (selection.classList.contains('completed')) {
-      document.querySelectorAll('#completed')
-    }
+}
+function clearCompleted(){
+  let completed = document.getElementsByClassName('completed');
+  while(completed.length > 0){
+      completed[0].parentNode.removeChild(completed[0]);
   }
-};
+}
